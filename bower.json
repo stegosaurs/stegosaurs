@@ -1,0 +1,10 @@
+{
+  "name": "Greenfield",
+  "version": "0.0.0",
+  "authors": ["Nick Fleischhauer", "Keeley Nakamoto", "Gabriel Schrock", "Leo Vergara"],
+  "license": "MIT",
+  "ignore": [
+    "node_modules",
+    "bower_components",
+  ]
+}
