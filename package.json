@@ -16,6 +16,9 @@
     "mongojs": "^2.4.0",
     "mongoose": "4.4.19",
     "nodemon": "^1.2.1",
-    "gulp": "3.9.1"
+    "jshint": "2.9.2",
+    "jshint-stylish": "2.2.0",
+    "gulp": "3.9.1",
+    "gulp-jshint": "2.0.1"
   }
 }
