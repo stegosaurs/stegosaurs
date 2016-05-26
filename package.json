@@ -15,6 +15,7 @@
     "request": "^2.36.0",
     "mongojs": "^2.4.0",
     "mongoose": "4.4.19",
-    "nodemon": "^1.2.1"
+    "nodemon": "^1.2.1",
+    "gulp": "3.9.1"
   }
 }
