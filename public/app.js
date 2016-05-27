@@ -21,6 +21,7 @@ savor.controller('savorCtrl', ['$scope', function savorCtrl($scope) {
     ambianceRating: 0,
     recommendation: ''
   };
+}]);
 
 savor.factory('Restaurants' ['$http', function restaurantsFactory($http) {
   var getRestaurants = function() {
@@ -48,8 +49,4 @@ savor.factory('Restaurants' ['$http', function restaurantsFactory($http) {
     getRestaurants: getRestaurants
     // addRestaurant: addRestaurant
   };
-}]);
-
-
-
 }]);

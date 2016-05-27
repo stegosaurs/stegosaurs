@@ -10,7 +10,7 @@
   
   <body ng-controller="savorCtrl">
     <h1>Savor</h1>
-    <div ng-repeat="restaurant in restaurants | orderBy: createdAt">
+    <div ng-repeat="restaurant in restaurants">
       <h3>{{restaurant.name}}</h3>
       <img src="{{restaurant.image}}">
       <h5>Recommended by: {{restaurant.username}}</h5>
