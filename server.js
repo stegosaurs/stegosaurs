@@ -5,7 +5,7 @@ var bodyParser = require('body-parser');
 var morgan = require('morgan');
 var mongoose = require('mongoose');
 // Might need path. It's a node thing.
-var path = require('path');
+// var path = require('path');
 
 // Create an instance of express
 var app = express();
@@ -20,7 +20,7 @@ mongoose.connect(mongoURI);
 
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, "There's an error"));
-db.once('open', function callback(){console.log('successfully logged into mongo')});
+db.once('open', function callback(){console.log('successfully logged into mongo');  });
 
 var restSchema = new mongoose.Schema({
    name: String,
@@ -46,7 +46,7 @@ var seed = new Restaurant({
   ambianceRating: "5",
   recommendation: "Yes"
 
-})
+});
 seed.save(function(err, data){
   if(err){
     console.log(err);
@@ -56,14 +56,9 @@ seed.save(function(err, data){
 });
 
 
-// Add middleware. Note about express.static: this will be used in the event that we are jsut serving static file, such as a single page
-// application. This assumes that routing is being handled on the client side via angular.
-
 
 // Tell the server to listen to a port
 var port = process.env.PORT || 4000;
 app.listen(port);
 console.log('Listening at port: ' + port);
 
-// Export our app apparently for testing/flexibility.
-// It was required by index.js files in a library fold in previous examples.
