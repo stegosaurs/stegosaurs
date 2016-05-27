@@ -10,7 +10,7 @@ var path = require('path');
 // Create an instance of express
 var app = express();
 app.use(morgan('dev'));
-app.use(express.static(__dirname + '/../app'));
+app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.json());
 
 // Connect to mongo database
