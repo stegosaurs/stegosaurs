@@ -18,13 +18,13 @@ Once the project moves into development, the press release can be used as a touc
  
 ## Heading ##
   > Name the product in a way the reader (i.e. your target customers) will understand.
-
+Savor: A Restaurant Recommendation Application
 ## Sub-Heading ##
   > Describe who the market for the product is and what benefit they get. One sentence only underneath the title.
-
+For people who care about finding the perfect restaurant to suit the occasion.
 ## Summary ##
   > Give a summary of the product and the benefit. Assume the reader will not read anything else so make this paragraph good.
-
+Savor is a restaurant recommendation app that helps people find the perfect restaurant to suit the occasion. Recommenders rate restaurants in three categories: food, service, and ambiance. After answering a few simple questions
 ## Problem ##
   > Describe the problem your product solves.
 
