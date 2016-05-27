@@ -1,16 +1,16 @@
-var savor = angular.module('savor', ['ngRoute']);
+var savor = angular.module('savor', ['ngRoute','ngMaterial'])
 
-savor.config(function($routeProvider) {
+.config(function($routeProvider) {
   $routeProvider
 
   //route for the home page
   .when('/', {
     templateUrl: 'index.html',
     controller: 'savorCtrl'
-  })
+  });
 })
 
-savor.controller('savorCtrl', function savorCtrl($scope) {
+.controller('savorCtrl',['$scope',function savorCtrl($scope) {
   angular.extend($scope);
   $scope.restaurant = {
     name: 'Tasty',
@@ -22,7 +22,7 @@ savor.controller('savorCtrl', function savorCtrl($scope) {
     ambianceRating: 5,
     recommendation: 'I recommend this restaurant'
   };
-});
+}]);
 
 // savor.factory('Restaurants' ['$http', function restaurantsFactory($http) {
 //   var getRestaurants = function() {
