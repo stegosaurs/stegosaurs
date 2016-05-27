@@ -21,10 +21,10 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
 // Tell the server to listen to a port
-var port = process.env.PORT || 3000;
+var port = process.env.PORT || 4000;
 app.listen(port);
 console.log('Listening at port: ' + port);
 
 // Export our app apparently for testing/flexibility.
 // It was required by index.js files in a library fold in previous examples.
-module.exports(app);
+//module.exports(app);
