@@ -55,10 +55,31 @@ seed.save(function(err, data){
   }
 });
 
+app.get('/api/restaurant', function(req, res){
+  Restaurant.find(function (err, data){
+    res.json(data);
+  });
+});
+
+//exposes the id from mongodb to an API.
+app.get('/api/restaurant/:id', function(req, res){
+  Restaurant.findById(req.params.id, function(err, data){
+    res.json(data);
+  })
+});
+
+app.delete('/api/restaurant/:id', function(req, res){
+  Restaurant.remove({_id: req.params.id}, function(err, doc){
+    console.log(err);
+    console.log(doc);
+    Restaurant.findById(req.params.id, function(err, data){
+      res.json(data);
+    });
+  });
+});
 
 
 // Tell the server to listen to a port
 var port = process.env.PORT || 4000;
 app.listen(port);
 console.log('Listening at port: ' + port);
-
