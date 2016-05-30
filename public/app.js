@@ -11,7 +11,7 @@ var savor = angular.module('savor', ['ngRoute','ngMaterial'])
 })
 
 .controller('savorCtrl',['$scope',function savorCtrl($scope) {
-  angular.extend($scope);
+  // angular.extend($scope); not needed?  
   $scope.restaurant = {
     name: 'Tasty',
     image: 'http://www.gothamgal.com/wp-content/uploads/2016/04/bigdumpling-600x600.jpg',
