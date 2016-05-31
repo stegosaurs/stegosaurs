@@ -22,6 +22,10 @@ var savor = angular.module('savor', ['ngRoute','ngMaterial'])
       $scope.restaurants = res.data;
     });
   }
+  
+  // need to invoke to populate main page
+  // with db data
+  getContacts();
 
 }]);
 

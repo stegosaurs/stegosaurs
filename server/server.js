@@ -10,6 +10,9 @@ var mongoose = require('mongoose');
 mongoURI = process.env.MONGODB_URI || 'mongodb://localhost/restaurant';
 mongoose.connect(mongoURI);
 
+
+
+
 // Verify mongoose connection.
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, "There's an error"));
