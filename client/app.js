@@ -1,4 +1,4 @@
-var savor = angular.module('savor', ['ngRoute','ngMaterial'])
+var savor = angular.module('savor', ['ui.router','ngMaterial'])
 
 .config(function($stateProvider,$urlRouterProvider) {
 
