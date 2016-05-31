@@ -16,14 +16,14 @@ gulp.task('lint', function() {
 });
 
 gulp.task('concat', function() {
-  return gulp.src('./lib/*.js')
+  return gulp.src(['./client/*.js', './server/*/**.js'])
     .pipe(concat('all.js'))
     .pipe(gulp.dest('./dist/'));
 });
 
 gulp.task('uglify', function() {
-  return gulp.src('lib/*.js')
+  return gulp.src('./dist/*.js')
     .pipe(uglify())
-    .pipe(gulp.dest('dist'));
+    .pipe(gulp.dest('./dist/'));
 });
 
