@@ -10,7 +10,7 @@ module.exports = {
         callback(restaurants);
       }
     });
-  };
+  },
 
   fetchOne: function(id, callback) {
     Restaurant.findById(id).then(function(err, restaurant) {
@@ -20,7 +20,7 @@ module.exports = {
         callback(restaurant);
       }
     })
-  };
+  },
 
   addOne: function(restaurant, callback) {
     //nick
@@ -32,7 +32,7 @@ module.exports = {
         callback(newEntry);
       }
     })
-  };
+  },
 
   updateOne: function(id, newProperties, callback) {
     //refactor to use promises?
@@ -50,7 +50,7 @@ module.exports = {
         })
       }
     })
-  };
+  },
 
   deleteOne: function(id, callback) {
     fetchOne(id, function(err, user) {
@@ -66,6 +66,5 @@ module.exports = {
         })
       }
     })
-  };
-
+  }
 };

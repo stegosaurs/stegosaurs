@@ -9,7 +9,7 @@ module.exports = {
 
   getOneRestaurant: function(req, res) {
     //getting the id incorrectly
-    var id = req.params.id;
+    var id = req.params._id;
     restaurantController.fetchOne(id, function(restaurant) {
       res.status(200).json(restaurant);
     })
@@ -24,7 +24,7 @@ module.exports = {
 
   updateRestaurantInfo: function(req, res) {
     //_.id
-    var id = req.params.id;
+    var id = req.params._id;
     var newProperties = req.body;
     restaurantController.updateOne(id, newProperties, function(updatedRestaurant) {
       res.status(200).json(updatedRestaurant);
@@ -32,10 +32,9 @@ module.exports = {
   },
 
   deleteRestaurant: function(req, res) {
-    var id = req.params.id;
+    var id = req.params._id;
     restaurantController.deleteOne(id, function (deleted) {
       res.status(200).json(deleted);
     })
   }
-
 };
