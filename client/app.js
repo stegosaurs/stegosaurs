@@ -1,11 +1,13 @@
-var savor = angular.module('savor', ['ngRoute','ngMaterial'])
+var savor = angular.module('savor', ['ui.router','ngMaterial'])
 
-.config(function($routeProvider) {
-  $routeProvider
+.config(function($stateProvider,$urlRouterProvider) {
 
+  $urlRouterProvider.otherwise('/');
+  $stateProvider
   //route for the home page
-  .when('/', {
-    templateUrl: 'index.html',
+  .state('home', {
+    url: '/',
+    templateUrl: 'views/differentView.html',
     controller: 'savorCtrl'
   });
 })
@@ -13,7 +15,7 @@ var savor = angular.module('savor', ['ngRoute','ngMaterial'])
 .controller('savorCtrl',['$scope', '$http', function savorCtrl($scope,$http) {
   // angular.extend($scope); not needed?  
   $scope.restaurants = [];
-
+  
   function getContacts() {
     $http({
       method: 'GET',
@@ -23,8 +25,7 @@ var savor = angular.module('savor', ['ngRoute','ngMaterial'])
     });
   }
   
-  // need to invoke to populate main page
-  // with db data
+
   getContacts();
 
 }]);
