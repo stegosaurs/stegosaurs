@@ -2,8 +2,40 @@ var restaurantController = require('./../db/controllers');
 
 module.exports = {
   getRestaurants:  function(req, res) {
-      restaurantController.fetchRestaurants(function(data) {
-        res.status(200).json(data);
-      });
-    },
+    restaurantController.fetchAll(function(restaurants) {
+      res.status(200).json(restaurants);
+    });
+  },
+
+  getOneRestaurant: function(req, res) {
+    //getting the id incorrectly
+    var id = req.params.id;
+    restaurantController.fetchOne(id, function(restaurant) {
+      res.status(200).json(restaurant);
+    })
+  },
+
+  addRestaurant: function(req, res) {
+    var restaurant = req.body;
+    restaurantController.addOne(restaurant, function(newRestaurant) {
+      res.status(201).json(newRestaurant);
+    })
+  },
+
+  updateRestaurantInfo: function(req, res) {
+    //_.id
+    var id = req.params.id;
+    var newProperties = req.body;
+    restaurantController.updateOne(id, newProperties, function(updatedRestaurant) {
+      res.status(200).json(updatedRestaurant);
+    })
+  },
+
+  deleteRestaurant: function(req, res) {
+    var id = req.params.id;
+    restaurantController.deleteOne(id, function (deleted) {
+      res.status(200).json(deleted);
+    })
+  }
+
 };
