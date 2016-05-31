@@ -28,7 +28,15 @@ app.use(morgan('dev'));
 var handler = require('./handlers/handlers');
 
 // Routes
-app.get('/api/restaurant',handler.getRestaurants);
+app.get('/api/restaurants', handler.getRestaurants);
+
+app.get('/api/restaurants/:id', handler.getOneRestaurant);
+
+app.post('/api/restaurants', handler.addRestaurant);
+
+app.put('/api/restuarants:id', handler.updateRestaurantInfo);
+
+app.delete('/api/users/:id', handler.deleteRestaurant);
 
 // Start server
 var port = process.env.PORT || 4000;

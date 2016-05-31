@@ -1,3 +1,4 @@
+
 var savor = angular.module('savor', ['ui.router','ngMaterial'])
 
 .config(function($stateProvider,$urlRouterProvider) {
@@ -12,21 +13,45 @@ var savor = angular.module('savor', ['ui.router','ngMaterial'])
   });
 })
 
-.controller('savorCtrl',['$scope', '$http', function savorCtrl($scope,$http) {
+.controller('savorCtrl',['$scope', '$http', '$location', '$stateParams', function savorCtrl($scope, $http, $location, $stateParams) {
   // angular.extend($scope); not needed?  
-  $scope.restaurants = [];
-  
-  function getContacts() {
-    $http({
-      method: 'GET',
-      url: '/api/restaurant'
-    }).then(function(res) {
+  //$scope.restaurants = [];
+
+  function getAll() {
+    $http.get('/api/restaurants').then(function(res) {
       $scope.restaurants = res.data;
     });
   }
-  
 
-  getContacts();
+  function getOne() {
+    var id = $stateParams.id;
+    console.log(id);
+    $http.get('/api/restaurants/'+id).then(function(res) {
+      $scope.restaurant = res.data;
+    })
+  }
+
+  function addOne() {
+    $http.post('/api/restaurants', $scope.restaurant).then(function(res) {
+      window.location.href='#/restaurants'
+    })
+  };
+
+  function update() {
+    var id = $stateParams.id;
+    $http.put('/api/restaurants/'+id, $scope.restaurant).then(function(res) {
+      window.location.href='#/restaurants';
+    })
+  };
+
+  function remove() {
+    var id = $stateParams.id;
+    $http.delete('/api/restaurants/' + id).success(function(response) {
+      window.location.href='#/restuarants';
+    })
+  }
+
+  getAll();
 
 }]);
 
@@ -57,12 +82,6 @@ var savor = angular.module('savor', ['ui.router','ngMaterial'])
 //     // addRestaurant: addRestaurant
 //   };
 // }]);
-
-
-
-
-
-
 
 
   // {
