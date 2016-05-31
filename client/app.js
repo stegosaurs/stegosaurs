@@ -1,16 +1,63 @@
-var savor = angular.module('savor', ['ui.router','ngMaterial'])
+var savor = angular.module('savor', ['auth0', 'angular-storage', 'angular-jwt','ui.router','ngMaterial'])
 
-.config(function($stateProvider,$urlRouterProvider) {
+.config(function($provide, authProvider, $urlRouterProvider, $stateProvider, $httpProvider, jwtInterceptorProvider) {
+  
+  authProvider.init({ 
+    domain: 'savor.auth0.com', 
+    clientID: 'VJw1CCaxKJ4FdkqPamlBxUUrjuGapt8e',  
+    loginState: '/login' // matches login state
+  })
+  
+  authProvider.on('loginSuccess', function($location, profilePromise, idToken, store) {
+    console.log("Login Success");
+    profilePromise.then(function(profile) {
+      store.set('profile', profile);
+      store.set('token', idToken);
+    });
+    $location.path('/');
+  });
 
-  $urlRouterProvider.otherwise('/');
+  //Called when login fails
+  authProvider.on('loginFailure', function() {
+    console.log("Error logging in");
+    $location.path('/login');
+  });
+
+  $urlRouterProvider.otherwise('/login');
   $stateProvider
   //route for the home page
   .state('home', {
-    url: '/',
-    templateUrl: 'views/differentView.html',
-    controller: 'savorCtrl'
-  });
+    url: '/login',
+    templateUrl: 'index.html',
+    controller: 'savorCtrl',
+    
+  // })
+  // .state('logout', { 
+  //   url: '/logout', 
+  //   templateUrl: 
+  //   'views/logout.html', 
+  //   controller: 'LogoutCtrl' 
+  // })
+  // .state('login', { 
+  //   url: '/login', 
+  //   templateUrl: 'views/login.html', 
+  //   controller: 'LoginCtrl' 
+  // })
+  // .state('root', { 
+  //   url: '/', 
+  //   templateUrl: 'views/root.html', 
+  //   controller: 'RootCtrl', 
+  //   data: { requiresLogin: true } 
+  })
+  
+  //Angular HTTP Interceptor function
+  jwtInterceptorProvider.tokenGetter = function(store) {
+      return store.get('token');
+  }
+  //Push interceptor function to $httpProvider's interceptors
+  $httpProvider.interceptors.push('jwtInterceptor');
 })
+
 
 .controller('savorCtrl',['$scope', '$http', '$location', '$stateParams', function savorCtrl($scope, $http, $location, $stateParams) {
   // angular.extend($scope); not needed?  
@@ -53,6 +100,11 @@ var savor = angular.module('savor', ['ui.router','ngMaterial'])
   getAll();
 
 }]);
+
+savor.run(function(auth) {
+  // This hooks all auth events to check everything as soon as the app starts
+  auth.hookEvents();
+});
 
 // savor.factory('Restaurants' ['$http', function restaurantsFactory($http) {
 //   var getRestaurants = function() {
