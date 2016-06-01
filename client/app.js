@@ -19,13 +19,14 @@ angular
   });
 
   $urlRouterProvider.otherwise('/');
-  // $urlRouterProvider.otherwise('/home');
   
   $stateProvider
   //route for the home page
   .state('home', {
     url: '/home',
-    templateUrl: '/views/components/home/home.tpl.html'
+    // templateUrl: '/views/components/home/home.tpl.html'
+    templateUrl: 'views/differentView.html',
+    controller: 'savorCtrl'
   })
   .state('profile', {
     url: '/profile',
@@ -43,7 +44,7 @@ angular
   };
   
   $httpProvider.interceptors.push('jwtInterceptor');
-})
+  })
 
   // .directive('toolbar', toolbar)
 
