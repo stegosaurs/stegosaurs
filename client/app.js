@@ -25,11 +25,11 @@ angular
   //route for the home page
   .state('home', {
     url: '/home',
-    templateUrl: 'components/home/home.tpl.html'
+    templateUrl: '/views/components/home/home.tpl.html'
   })
   .state('profile', {
     url: '/profile',
-    templateUrl: 'components/profile/profile.tpl.html',
+    templateUrl: '/views/components/profile/profile.tpl.html',
     controller: 'profileController as user'
   });
   // .state('home', {

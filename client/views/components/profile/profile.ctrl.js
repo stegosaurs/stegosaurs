@@ -16,7 +16,7 @@
     // avoid sending the JWT as an Authorization
     // header with skipAuthorization: true
     function getMessage() {
-      $http.get('http://localhost:3001/api/public', {
+      $http.get('http://localhost:4000/api/public', {
         skipAuthorization: true
       }).then(function(response) {
         vm.message = response.data.message;
@@ -27,7 +27,7 @@
     // require authentication. The JWT is automatically
     // sent with HTTP calls using jwtInterceptorProvider in app.js
     function getSecretMessage() {
-      $http.get('http://localhost:3001/api/private').then(function(response) {
+      $http.get('http://localhost:4000/api/private').then(function(response) {
         vm.message = response.data.message;
       });
     }
