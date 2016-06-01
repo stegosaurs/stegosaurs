@@ -1,65 +1,35 @@
-var savor = angular.module('savor', ['auth0', 'angular-storage', 'angular-jwt','ui.router','ngMaterial'])
+// var savor = 
+angular
+  .module('savor', [
+    'savor.toolbar',
+    'auth0', 
+    'angular-storage', 
+    'angular-jwt',
+    'ui.router',
+    'ngMaterial'
+  ])
+
 
 .config(function($provide, authProvider, $urlRouterProvider, $stateProvider, $httpProvider, jwtInterceptorProvider) {
-  
-  authProvider.init({ 
-    domain: 'savor.auth0.com', 
-    clientID: 'VJw1CCaxKJ4FdkqPamlBxUUrjuGapt8e',  
-    loginState: '/login' // matches login state
-  })
-  
-  authProvider.on('loginSuccess', function($location, profilePromise, idToken, store) {
-    console.log("Login Success");
-    profilePromise.then(function(profile) {
-      store.set('profile', profile);
-      store.set('token', idToken);
-    });
-    $location.path('/');
+    
+  authProvider.init({
+    domain: 'savor.auth0.com',
+    clientID: 'VJw1CCaxKJ4FdkqPamlBxUUrjuGapt8e'
   });
 
-  //Called when login fails
-  authProvider.on('loginFailure', function() {
-    console.log("Error logging in");
-    $location.path('/login');
-  });
-
-  $urlRouterProvider.otherwise('/login');
+  $urlRouterProvider.otherwise('/');
   $stateProvider
   //route for the home page
   .state('home', {
     url: '/login',
-    templateUrl: 'index.html',
+    templateUrl: 'views/differentView.html',
     controller: 'savorCtrl',
-    
-  // })
-  // .state('logout', { 
-  //   url: '/logout', 
-  //   templateUrl: 
-  //   'views/logout.html', 
-  //   controller: 'LogoutCtrl' 
-  // })
-  // .state('login', { 
-  //   url: '/login', 
-  //   templateUrl: 'views/login.html', 
-  //   controller: 'LoginCtrl' 
-  // })
-  // .state('root', { 
-  //   url: '/', 
-  //   templateUrl: 'views/root.html', 
-  //   controller: 'RootCtrl', 
-  //   data: { requiresLogin: true } 
-  })
-  
-  //Angular HTTP Interceptor function
-  jwtInterceptorProvider.tokenGetter = function(store) {
-      return store.get('token');
-  }
-  //Push interceptor function to $httpProvider's interceptors
-  $httpProvider.interceptors.push('jwtInterceptor');
+  });
 })
 
+  // .directive('toolbar', toolbar)
 
-.controller('savorCtrl',['$scope', '$http', '$location', '$stateParams', function savorCtrl($scope, $http, $location, $stateParams) {
+  .controller('savorCtrl',['$scope', '$http', '$location', '$stateParams', function savorCtrl($scope, $http, $location, $stateParams) {
   // angular.extend($scope); not needed?  
   //$scope.restaurants = [];
 
@@ -74,37 +44,76 @@ var savor = angular.module('savor', ['auth0', 'angular-storage', 'angular-jwt','
     console.log(id);
     $http.get('/api/restaurants/'+id).then(function(res) {
       $scope.restaurant = res.data;
-    })
+    });
   }
 
   function addOne() {
     $http.post('/api/restaurants', $scope.restaurant).then(function(res) {
-      window.location.href='#/restaurants'
-    })
-  };
+      window.location.href='#/restaurants';
+    });
+  }
 
   function update() {
     var id = $stateParams.id;
     $http.put('/api/restaurants/'+id, $scope.restaurant).then(function(res) {
       window.location.href='#/restaurants';
-    })
-  };
+    });
+  }
 
   function remove() {
     var id = $stateParams.id;
     $http.delete('/api/restaurants/' + id).success(function(response) {
       window.location.href='#/restuarants';
-    })
+    });
   }
 
   getAll();
 
 }]);
 
-savor.run(function(auth) {
-  // This hooks all auth events to check everything as soon as the app starts
-  auth.hookEvents();
-});
+  // function toolbar() {
+  //   return {
+  //     templateUrl: '/views/components/toolbar/toolbar.tpl.html',
+  //     controller: toolbarController,
+  //     controllerAs: 'toolbar'
+  //   };
+  // }
+
+
+  // function toolbarController(auth, store, $location) {
+  //   var vm = this;
+  //   vm.login = login;
+  //   vm.logout = logout;
+  //   vm.auth = auth;
+
+  //   function login() {
+  //     // The auth service has a signin method that
+  //     // makes use of Auth0Lock. If authentication
+  //     // is successful, the user's profile and token
+  //     // are saved in local storage with the store service
+  //     auth.signin({}, function(profile, token) {
+  //       store.set('profile', profile);
+  //       store.set('token', token);
+  //       $location.path('/');
+  //     }, function(error) {
+  //       console.log(error);
+  //     });
+  //   }
+
+  //   function logout() {
+  //     // The signout method on the auth service
+  //     // sets isAuthenticated to false but we
+  //     // also need to remove the profile and
+  //     // token from local storage
+  //     auth.signout();
+  //     store.remove('profile');
+  //     store.remove('token');
+  //     $location.path('/');
+  //   }
+  // }
+
+
+
 
 // savor.factory('Restaurants' ['$http', function restaurantsFactory($http) {
 //   var getRestaurants = function() {
@@ -134,24 +143,3 @@ savor.run(function(auth) {
 //   };
 // }]);
 
-
-  // {
-  //   name: 'Tasty',
-  //   image: 'http://www.gothamgal.com/wp-content/uploads/2016/04/bigdumpling-600x600.jpg',
-  //   username: 'peggysue',
-  //   userPhoto: 'http://www.nextbillion.net/wp-content/uploads/JackieHyland200.jpg',
-  //   foodRating: 5,
-  //   serviceRating: 5,
-  //   ambianceRating: 5,
-  //   recommendation: 'I recommend this restaurant'
-  // },
-  // {
-  //   name: 'Test2',
-  //   image: 'http://i.telegraph.co.uk/multimedia/archive/03262/burgerss_3262533b.jpg',
-  //   username: 'Johnny Five',
-  //   userPhoto: 'http://vignette3.wikia.nocookie.net/robotsupremacy/images/7/7f/Johnny5-2.jpg/revision/latest?cb=20120321192157',
-  //   foodRating: 5,
-  //   serviceRating: 5,
-  //   ambianceRating: 5,
-  //   recommendation: 'Johnny Five likes!'
-  // }

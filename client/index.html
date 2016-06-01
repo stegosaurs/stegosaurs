@@ -20,9 +20,6 @@
   <!-- Angular wrapper library for JWT-->
   <script src="http://cdn.rawgit.com/auth0/angular-jwt/master/dist/angular-jwt.js" type="text/javascript"> </script>
 
-  <!-- Ng route -->
-  <!--    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-route.js""></script> -->
-
   <!-- ui-route -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.0/angular-ui-router.js"></script>
 
@@ -42,18 +39,28 @@
 
   <!-- My Scripts -->
   <script src="app.js"></script>
-
+  <script src="/views/components/toolbar/toolbar.ctrl.js"></script>
+  <script src="/views/components/toolbar/toolbar.factory.js"></script>
+  <script src="/views/components/toolbar/toolbar.dir.js"></script>
+  <script src="/views/components/profile/profile.ctrl.js"></script>
+  
 </head>
 
 <body ng-app="savor" ng-controller="savorCtrl">
-<!-- Do you guys want this header in the other view? -->
+  <!-- Do you guys want this header in the other view? -->
   <h1>Savor</h1>
   <a ui-sref="home">State 1</a>
-  <a href="#" ng-click="auth.signin()">Sign In</a>
+<!--   <a href="#" ng-click="auth.signin()">Sign In</a> -->
   <div class="container">
     <!-- Where our content will be injected -->
-    <div ui-view></div>
+<!--     <div ui-view></div> -->
 
+    <toolbar></toolbar>
+
+<!-- <div ng-app='savor.toolbar' ng-controller='toolbarController as toolbar'></div> -->
+    <div layout-padding>
+      <ui-view></ui-view>
+    </div>
   </div>
 
 
