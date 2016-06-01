@@ -3,11 +3,22 @@
 <head>
   <meta charset="UTF-8">
   <title>Savor</title>
+  <!-- Auth0's lock widget library -->
+  <script type="text/javascript" src="https://cdn.auth0.com/js/lock-7.12.min.js"></script>
+
   <!-- AngularJS -->
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.js"></script>
-
-  <!-- Ng route -->
-  <!--    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-route.js""></script> -->
+  
+  <!-- Angular cookie wrapper library for client cookies -->
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0-rc.0/angular-cookies.js"></script>
+  <!-- Angular's Router Library for SPA -->
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0-rc.0/angular-route.js"></script>
+  <!-- Auth0's Angular SDK Library -->
+  <script type="text/javascript" src="https://cdn.auth0.com/w2/auth0-angular-4.js"></script>
+  <!-- Angular wrapper for localStorage and sessionStorage. Defaults to ng-cookies if not available -->
+  <script src="http://cdn.rawgit.com/auth0/angular-storage/master/dist/angular-storage.js" type="text/javascript"> </script>
+  <!-- Angular wrapper library for JWT-->
+  <script src="http://cdn.rawgit.com/auth0/angular-jwt/master/dist/angular-jwt.js" type="text/javascript"> </script>
 
   <!-- ui-route -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.0/angular-ui-router.js"></script>
@@ -19,23 +30,35 @@
 
   <!-- Angular Material -->
   <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0-rc2/angular-material.min.js"></script>
+  
+  <!-- Auth0's Viewport settings-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 
   <!-- My CSS -->
   <link rel="stylesheet" href="/styles.css">
 
   <!-- My Scripts -->
   <script src="app.js"></script>
-
+  <script src="/views/components/toolbar/toolbar.ctrl.js"></script>
+  <script src="/views/components/toolbar/toolbar.factory.js"></script>
+  <script src="/views/components/toolbar/toolbar.dir.js"></script>
+  <script src="/views/components/profile/profile.ctrl.js"></script>
+  
 </head>
 
 <body ng-app="savor" ng-controller="savorCtrl">
-<!-- Do you guys want this header in the other view? -->
+  <!-- Do you guys want this header in the other view? -->
   <h1>Savor</h1>
   <a ui-sref="home">State 1</a>
+<!--   <a href="#" ng-click="auth.signin()">Sign In</a> -->
   <div class="container">
     <!-- Where our content will be injected -->
-    <div ui-view></div>
+<!--     <div ui-view></div> -->
 
+    <toolbar></toolbar>
+    <div layout-padding>
+      <ui-view></ui-view>
+    </div>
   </div>
 
 
