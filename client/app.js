@@ -2,6 +2,7 @@
 angular
   .module('savor', [
     'savor.toolbar',
+    'savor.profile',
     'auth0', 
     'angular-storage', 
     'angular-jwt',
@@ -18,13 +19,30 @@ angular
   });
 
   $urlRouterProvider.otherwise('/');
+  // $urlRouterProvider.otherwise('/home');
+  
   $stateProvider
   //route for the home page
   .state('home', {
-    url: '/login',
-    templateUrl: 'views/differentView.html',
-    controller: 'savorCtrl',
+    url: '/home',
+    templateUrl: 'components/home/home.tpl.html'
+  })
+  .state('profile', {
+    url: '/profile',
+    templateUrl: 'components/profile/profile.tpl.html',
+    controller: 'profileController as user'
   });
+  // .state('home', {
+  //   url: '/login',
+  //   templateUrl: 'views/differentView.html',
+  //   controller: 'savorCtrl',
+  // });
+  
+  jwtInterceptorProvider.tokenGetter = function(store) {
+    return store.get('token');
+  };
+  
+  $httpProvider.interceptors.push('jwtInterceptor');
 })
 
   // .directive('toolbar', toolbar)
