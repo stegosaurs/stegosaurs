@@ -2,12 +2,14 @@
 angular
   .module('savor', [
     'savor.toolbar',
+    'savor.review',
     'savor.profile',
     'auth0', 
     'angular-storage', 
     'angular-jwt',
     'ui.router',
-    'ngMaterial'
+    'ngMaterial',
+    'material.svgAssetsCache'
   ])
 
 
@@ -32,12 +34,12 @@ angular
     url: '/profile',
     templateUrl: '/views/components/profile/profile.tpl.html',
     controller: 'profileController as user'
+  })
+  .state('review', {
+    url: '/review',
+    templateUrl: '/views/components/review/review.tpl.html',
+    controller: 'reviewController',
   });
-  // .state('home', {
-  //   url: '/login',
-  //   templateUrl: 'views/differentView.html',
-  //   controller: 'savorCtrl',
-  // });
   
   jwtInterceptorProvider.tokenGetter = function(store) {
     return store.get('token');

@@ -1,6 +1,13 @@
 var restaurantController = require('./../db/controllers');
 
 module.exports = {
+  getRestaurantsByUser: function(req, res){
+    var id = req.params._id;
+    restaurantController.fetchAllById(id, function(restaurant) {
+      res.status(200).json(restaurant);
+    })
+  },
+  
   getRestaurants:  function(req, res) {
     restaurantController.fetchAll(function(restaurants) {
       res.status(200).json(restaurants);

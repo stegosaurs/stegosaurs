@@ -27,6 +27,7 @@
   <script src="bower_components/angular-animate/angular-animate.min.js"></script>
   <script src="bower_components/angular-aria/angular-aria.min.js"></script>
   <script src="bower_components/angular-messages/angular-messages.min.js"></script>
+  <script src="http://ngmaterial.assets.s3.amazonaws.com/svg-assets-cache.js"></script>
 
   <!-- Angular Material -->
   <script src="bower_components/angular-material/angular-material.min.js"></script>
@@ -44,23 +45,26 @@
   <script src="/views/components/toolbar/toolbar.factory.js"></script>
   <script src="/views/components/toolbar/toolbar.dir.js"></script>
   <script src="/views/components/profile/profile.ctrl.js"></script>
+  <script src="/views/components/review/review.dir.js"></script>
+  <script src="/views/components/review/review.ctrl.js"></script>
   
 </head>
 
 <body ng-app="savor" ng-controller="savorCtrl">
-  <!-- Do you guys want this header in the other view? -->
-  <h1>Savor</h1>
-  <a ui-sref="home">State 1</a>
-<!--   <a href="#" ng-click="auth.signin()">Sign In</a> -->
-  <div class="container">
-    <!-- Where our content will be injected -->
-<!--     <div ui-view></div> -->
 
-    <toolbar></toolbar>
+<!-- <h1>Savor</h1>
+  <a ui-sref="home">State 1</a>
+  <a href="#" ng-click="auth.signin()">Sign In</a>
+  <div class="container"> -->
+
+
+<toolbar></toolbar>
+<!-- <review></review>
     <div layout-padding>
       <ui-view></ui-view>
     </div>
-  </div>
+  </div> -->
+  <div ui-view=''></div>
 
 
 

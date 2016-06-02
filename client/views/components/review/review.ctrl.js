@@ -1,6 +1,6 @@
 angular
-  .module('MyApp',['ngMaterial', 'ngMessages', 'material.svgAssetsCache'])
-  .controller('FormCtrl', function($scope) {
+  .module('savor.review',['ngMaterial', 'ngMessages', 'material.svgAssetsCache'])
+  .controller('reviewController', function($scope) {
     $scope.restaurant = {
       name: '',
       address: '',
