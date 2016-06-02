@@ -2,6 +2,16 @@ var Restaurant = require('./models');
 var _ = require('underscore');
 
 module.exports = {
+    fetchAllById: function(clientID, callback) {
+    Restaurant.findById(clientID).then(function(err, restaurant) {
+      if (err) {
+        console.log(err);
+      } else {
+        callback(restaurant);
+      }
+    })
+  },
+  
   fetchAll: function(callback) {
     Restaurant.find(function(err,restaurants) {
       if(err) {

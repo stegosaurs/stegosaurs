@@ -36,6 +36,11 @@ var authCheck = jwt({
 var handler = require('./handlers/handlers');
 
 // Routes
+// get from /api/private 
+// send clientID
+// retrieve db data response based on clientID filter as array
+app.get('/api/private', handler.getRestaurantsByUser);
+
 app.get('/api/public', function(req, res) {
   res.json({ message: "Hello from a public endpoint! You don't need to be authenticated to see this." });
 });
