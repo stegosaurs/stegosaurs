@@ -63,19 +63,7 @@
 
 <body ng-app="savor" ng-controller="savorCtrl">
 
-  <div layout="column">  
-    <md-toolbar ng-show="!showSearch">
-      <div class="md-toolbar-tools">
-        <h1>Savor</h1>
-        <span flex></span>
-         <md-button aria-label="Write Review"  style="float:right" ng-click="someAction()">
-           <i class="material-icons" class="name">mode_edit</i></md-icon>
-        </md-button>
-        <md-button aria-label="User Settings"  style="float:right" ng-click="someAction()">
-           <i class="material-icons" class="name">perm_identity</i></md-icon>
-        </md-button>
-      </div>
-    </md-toolbar>
+  <div layout="column" ng-if="toolbar.auth.isAuthenticated">  
     <md-toolbar class="md-hue-1" ng-show="showSearch">
       <div class="md-toolbar-tools">
         <md-input-container md-theme="input" flex>
@@ -88,7 +76,7 @@
       </div>
     </md-toolbar>
 
-  <h1 id="username">Keeley Nakamoto</h1>
+  <h1 id="username">{{user.profile.nickname}}</h1>
   <div id="userphoto"><img src="images/avatar.png" alt="rest1"></div>
   <br>
   <p id="restaurantCount">Restaurants Visited: {{user.reviewCount}}</p>

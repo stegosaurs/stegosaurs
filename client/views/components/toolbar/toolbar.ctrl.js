@@ -9,7 +9,7 @@ function toolbarController(auth, store, $location) {
     vm.auth = auth;
     
     function login() {
-      console.log('SUCCCCESSSSS');
+      console.log("Login Success");
       // The auth service has a signin method that
       // makes use of Auth0Lock. If authentication
       // is successful, the user's profile and token
@@ -17,13 +17,15 @@ function toolbarController(auth, store, $location) {
       auth.signin({}, function(profile, token) {
         store.set('profile', profile);
         store.set('token', token);
-        $location.path('/');
+        $location.path('/user');
+        if (!$rootScope.$$phase) $rootScope.$apply();
       }, function(error) {
         console.log(error);
       });
     }
 
     function logout() {
+      console.log("Logout Success")
       // The signout method on the auth service
       // sets isAuthenticated to false but we
       // also need to remove the profile and

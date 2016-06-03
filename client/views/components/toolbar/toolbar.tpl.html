@@ -3,30 +3,52 @@
 <md-toolbar>
   <div class="md-toolbar-tools">
     <h2>
-      <span>Angular Auth</span>
+      <span>SAVOR</span>
     </h2>
     <span flex></span>
 
     <md-button
       aria-label="Login"
+      ui-sref="toolbar"
       ng-if="!toolbar.auth.isAuthenticated"
       ng-click="toolbar.login()">
       Login
     </md-button>
 
     <md-button
-      ui-sref="profile"
+      ui-sref="user"
+      aria-label="Write Review"
+      style="float:right" 
+      ng-click="someAction()"
       ng-if="toolbar.auth.isAuthenticated"
-      aria-label="Profile">
-      Profile
+      aria-label="User">
+      <i class="material-icons" class="name">mode_edit</i></md-icon>
     </md-button>
 
     <md-button
       aria-label="Logout"
+      ui-sref="toolbar"
       ng-if="toolbar.auth.isAuthenticated"
       ng-click="toolbar.logout()">
       Logout
     </md-button>
+    
+    <!-- user button currently does nothing and appears regardless if logged in or not-->
+    <md-button aria-label="User Settings"  style="float:right" ng-click="someAction()">
+      <i class="material-icons" class="name">perm_identity</i></md-icon>
+    </md-button>
+    
+<!--         <md-toolbar class="md-hue-1" ng-show="showSearch">
+      <div class="md-toolbar-tools">
+        <md-input-container md-theme="input" flex>
+          <label>&nbsp;</label>
+          <input ng-model="search.who" placeholder="enter search">
+        </md-input-container>
+        <md-button aria-label="Search" ng-click="showSearch = !showSearch">
+          <i class="material-icons" class="name" layout-align="enc center">search</i></md-icon>
+        </md-button>
+      </div>
+    </md-toolbar> -->
 
   </div>
 </md-toolbar>
