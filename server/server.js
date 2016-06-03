@@ -35,10 +35,9 @@ var authCheck = jwt({
 // API endpoints
 var handler = require('./handlers/handlers');
 
-// Routes
-// get from /api/private 
-// send clientID
-// retrieve db data response based on clientID filter as array
+// use this route with review submit button
+app.post('/api/restaurants', handler.addRestaurant); 
+
 app.get('/api/private', handler.getRestaurantsByUser);
 
 app.get('/api/public', function(req, res) {
@@ -53,7 +52,6 @@ app.get('/api/restaurants', handler.getRestaurants);
 
 app.get('/api/restaurants/:id', handler.getOneRestaurant);
 
-app.post('/api/restaurants', handler.addRestaurant); // use this route with review submit button
 
 app.put('/api/restuarants:id', handler.updateRestaurantInfo);
 
