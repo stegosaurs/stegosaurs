@@ -2,14 +2,14 @@ var mongoose = require('mongoose');
 
 // Create the schema
 var restSchema = new mongoose.Schema({
- name: { type: String, required: true },
- image: { type: String, required: true },
- username: { type: String, required: true },
- userPhoto: { type: String, required: true },
- foodRating: { type: Number, required: true },
- serviceRating: { type: Number, required: true },
- ambianceRating: { type: Number, required: true },
- recommendation: { type: String, required: true }
+  restaurantName: { type: String },
+  restaurantAddress: { type: String },
+  priceRating: { type: String },
+  serviceRating: { type: String },
+  foodRating: { type: String },
+  ambienceRating: { type: String },
+  restaurantReview: { type: String },
+  userEmail: { type: String } 
  });
 
 //Export a Restaurant model to be used in the controllers file.

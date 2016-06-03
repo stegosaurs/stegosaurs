@@ -53,7 +53,7 @@ app.get('/api/restaurants', handler.getRestaurants);
 
 app.get('/api/restaurants/:id', handler.getOneRestaurant);
 
-app.post('/api/restaurants', handler.addRestaurant);
+app.post('/api/restaurants', handler.addRestaurant); // use this route with review submit button
 
 app.put('/api/restuarants:id', handler.updateRestaurantInfo);
 

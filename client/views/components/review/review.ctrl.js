@@ -1,10 +1,11 @@
 angular
   .module('savor.review',['ngMaterial', 'ngMessages', 'material.svgAssetsCache'])
-  .controller('reviewController', function($scope) {
+  .controller('reviewController', function($scope, $http) {
+      
     $scope.restaurant = {
       name: '',
       address: '',
-    };
+    }
     
     $scope.price = '';
     $scope.priceCategories = [{rating:1, text: "Expensive"}, {rating: 2, text: "Affordable"}, {rating: 3, text: "Cheap!" }];
@@ -17,4 +18,35 @@ angular
     
     $scope.ambience = '';
     $scope.ambienceCategories = [{rating:1, text: "Not a priority"}, {rating: 2, text: "Welcoming"}, {rating: 3, text: "Something special" }];
+    
+    
+    $scope.sendPost = function () {
+
+        var data = ({
+            restaurantName: $scope.restaurant.name,
+            restaurantAddress: $scope.restaurant.address,
+            priceRating: $scope.price,
+            serviceRating: $scope.service,
+            foodRating: $scope.food,
+            ambienceRating: $scope.ambience,
+            restaurantReview: $scope.restaurant.review,
+            userEmail: JSON.parse(window.localStorage.profile).email
+        });
+        console.log("data", data);
+        //console.log("user", JSON.parse(window.localStorage.profile).email);
+        
+    
+        var config = {
+            headers : {
+                'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
+            }
+        }
+        
+        $http({
+          method: "POST",
+          data: data,
+          url: '/api/restaurants'
+        })
+      };
+    
   });

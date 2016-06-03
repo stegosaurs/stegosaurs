@@ -23,8 +23,9 @@ module.exports = {
   },
 
   addRestaurant: function(req, res) {
+    console.log("req.body: ", req.body);
     var restaurant = req.body;
-    restaurantController.addOne(restaurant, function(newRestaurant) {
+    restaurantController.addRestaurantReview(restaurant, function(newRestaurant) {
       res.status(201).json(newRestaurant);
     })
   },
