@@ -31,9 +31,9 @@ module.exports = {
       }
     })
   },
-
-  addOne: function(restaurant, callback) {
-    //nick
+  
+  
+  addRestaurantReview: function(restaurant, callback) {
     var newRestaurant = new Restaurant(restaurant);
     newRestaurant.save(function(err, newEntry) {
       if (err) {
