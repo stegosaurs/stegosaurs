@@ -34,5 +34,6 @@ function toolbarController(auth, store, $location) {
       store.remove('profile');
       store.remove('token');
       $location.path('/');
+      if (!$rootScope.$$phase) $rootScope.$apply();
     }
 }
