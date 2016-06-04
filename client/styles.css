@@ -1,5 +1,9 @@
 
-html { overflow-y: scroll; }
+html { 
+  overflow-y: scroll;   
+}
+
+
 body {
   background: #f0f0f0;
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -7,6 +11,7 @@ body {
   font-size: 62.5%;
   line-height: 1;
 }
+
 
 h1 {
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -47,7 +52,7 @@ h1 > span {
 
 
 h22 {
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+/*  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-size: 2.1em;
   line-height: 1.4em;
   letter-spacing: normal;
@@ -59,11 +64,35 @@ h22 {
   white-space: nowrap;
   text-align: center;
   color: white;
-  vertical-align:bottom;
+  vertical-align:bottom;*/
 
 }
 
+.logo {
+  width: 95px;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 2.1em;
+  line-height: 1.4em;
+  letter-spacing: normal;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding: .1em 0;
+  color: #444;
+  position: relative;
+  overflow: hidden;
+  white-space: nowrap;
+  text-align: center;
+  color: white;
+  vertical-align:bottom;
+}
 
+
+.container {
+  background-image: url('http://www.st-barths.com/eden-rock/uploads/images/Gallery/restaurant/Restaurant-(3).jpg');
+  background-size: cover;
+  height: 664px;
+  width: 1008px;
+}
 
 
 

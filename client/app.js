@@ -33,17 +33,17 @@ angular
   .state('user', {
     url: '/user',
     templateUrl: '/views/components/user/user.tpl.html',
-    controller: 'userController',
+    controller: 'userController'
   })
   .state('review', {
     url: '/review',
     templateUrl: '/views/components/review/review.tpl.html',
-    controller: 'reviewController',
+    controller: 'reviewController'
   })
-  .state('main', {
-    url: '/logout',
-    templateUrl: '/views/components/toolbar/toolbar.tpl.html',
-    controller: 'toolbarController',
+  .state('/', {
+    url: '/',
+    // templateUrl: '/'
+    // controller: 'toolbarController',
   });
   
   jwtInterceptorProvider.tokenGetter = function(store) {
