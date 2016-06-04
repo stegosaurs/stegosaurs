@@ -46,7 +46,7 @@ h1 > span {
 }
 
 
-h2 {
+h22 {
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-size: 2.1em;
   line-height: 1.4em;
@@ -58,6 +58,28 @@ h2 {
   overflow: hidden;
   white-space: nowrap;
   text-align: center;
+  color: white;
+  vertical-align:bottom;
+
+}
+
+
+
+
+
+
+h2 {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 2.1em;
+  line-height: 1.4em;
+  letter-spacing: normal;
+  padding: .1em 0;
+  color: #444;
+  position: relative;
+  overflow: hidden;
+  white-space: nowrap;
+  text-align: center;
+  vertical-align: middle;
 }
 
 h2:before,
@@ -189,7 +211,12 @@ p {
   font-size: 18px;
 }
 
-
+.themer {
+  background-color: #3f51b5;
+  height: 80px;
+  
+  
+}
 
 
 /*bootstrap search*/
