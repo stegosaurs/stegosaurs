@@ -25,47 +25,47 @@
     </md-input-container>
   </md-content>
 
+    <p>Choose a score 1-5 for the following categories</p>
     <div layout="row">
       <md-input-container flex>
       <md-icon><i class="material-icons" class="name">spa</i></md-icon>
-        <label>Ambience</label>
-        <md-select ng-model="ambience">
-          <md-option ng-repeat="ambiences in ambienceCategories" value="{{ambiences.text}}">
-            {{ambiences.text}}
-          </md-option>
-        </md-select>
+        <input ng-model="ambience" type="text" placeholder="Ambience">
       </md-input-container>
 
       <md-input-container flex>
       <md-icon><i class="material-icons" class="name">local_pizza</i></md-icon>
-        <label>Food</label>
-        <md-select ng-model="food">
-          <md-option ng-repeat="foods in foodCategories" value="{{foods.text}}">
-            {{foods.text}}
-          </md-option>
-        </md-select>
+        <input ng-model="food" type="text" placeholder="Food">
       </md-input-container>
 
       <md-input-container flex>
       <md-icon><i class="material-icons" class="name">room_service</i></md-icon>
-        <label>Service</label>
-        <md-select ng-model="service">
-          <md-option ng-repeat= "services in serviceCategories" value="{{services.text}}">
-            {{services.text}}
-          </md-option>
-        </md-select>
+        <input ng-model="service" type="text" placeholder="Service">
       </md-input-container>
+
+      <md-input-container flex>
+      <md-icon><i class="material-icons" class="name">attach_money</i></md-icon>
+        <input ng-model="price" type="text" placeholder="Price">
+      </md-input-container>
+    </div>
+    
+<!--     TESTING -->
+<!--   <md-dialog>
+  <md-content>
+  <md-select ng-model="d"><md-option ng-value="opt.val" ng-repeat="opt in options">{{opt.name}}</md-option></md-select>
+  </md-content></md-dialog>
+
+
 
       <md-input-container flex>
       <md-icon><i class="material-icons" class="name">attach_money</i></md-icon>
         <label>Price</label>
         <md-select ng-model="price">
-          <md-option ng-repeat="prices in priceCategories" value="{{prices.text}}" >
+          <md-option ng-repeat="prices in priceCategories by $index"  >
             {{prices.text}}
           </md-option>
         </md-select>
       </md-input-container>
-    </div>
+    </div> -->
 
     <md-input-container md-no-float='' class="md-block">
       <span>{{200 - restaurant.review.length}} Characters remaining</span>

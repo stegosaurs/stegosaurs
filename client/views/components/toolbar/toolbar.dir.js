@@ -9,3 +9,4 @@
       controllerAs: 'toolbar'
     };
   }
+  

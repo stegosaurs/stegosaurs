@@ -30,19 +30,24 @@
   <script src="http://ngmaterial.assets.s3.amazonaws.com/svg-assets-cache.js"></script>
   <script src="bower_components/jquery/dist/jquery.min.js"></script>
 
+  <!-- Angular Material -->
+  <script src="bower_components/angular-material/angular-material.min.js"></script>
   
   <!-- Auth0's Viewport settings-->
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 
   <!-- My CSS -->
   <link rel="stylesheet" href="/styles.css">
-  <!-- Angular Material -->
+  <link rel="stylesheet" href="bower_components/ng-dialog/css/ngDialog.css">
+  <link rel="stylesheet" href="bower_components/ng-dialog/css/ngDialog-theme-default.css">
+  
+ <!--  ANGULAR MATERIAL -->
   <script src="bower_components/angular-material/angular-material.min.js"></script>
   <script src="bower_components/angular-material-icons/angular-material-icons.min.js"></script>
-  
 
   <!-- My Scripts -->
   <script src="app.js"></script>
+  <script src="bower_components/angular-material-icons/angular-material-icons.min.js"></script>
   <script src="/views/components/toolbar/toolbar.ctrl.js"></script>
   <script src="/views/components/toolbar/toolbar.factory.js"></script>
   <script src="/views/components/toolbar/toolbar.dir.js"></script>
@@ -51,14 +56,14 @@
   <script src="/views/components/review/review.ctrl.js"></script>
   <script src="/views/components/user/user.dir.js"></script>
   <script src="/views/components/user/user.ctrl.js"></script>
+  <script src="bower_components/ng-dialog/js/ngDialog.js"></script>
   
 </head>
 
 <body ng-app="savor" ng-controller="savorCtrl">
 
-
 <toolbar></toolbar>
-
+<span class="containerbackground"> </span>
 <div ui-view=''></div>
 
 

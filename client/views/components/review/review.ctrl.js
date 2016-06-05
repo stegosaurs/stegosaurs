@@ -1,23 +1,23 @@
 angular
-  .module('savor.review',['ngMaterial', 'ngMessages', 'material.svgAssetsCache'])
-  .controller('reviewController', function($scope, $http) {
+  .module('savor.review',['ngMaterial', 'ngMessages', 'material.svgAssetsCache', 'ngDialog'])
+  .controller('reviewController', function($scope, $http, ngDialog) {
       
-    $scope.restaurant = {
-      name: '',
-      address: '',
-    }
+    // $scope.restaurant = {
+    //   name: '',
+    //   address: '',
+    // }
     
-    $scope.price = '';
-    $scope.priceCategories = [{rating:1, text: "Expensive"}, {rating: 2, text: "Affordable"}, {rating: 3, text: "Cheap!" }];
+    // $scope.price = '';
+    // $scope.priceCategories = [{rating:1, text: "Expensive"}, {rating: 2, text: "Affordable"}, {rating: 3, text: "Cheap!" }];
     
-    $scope.service = '';
-    $scope.serviceCategories = [{rating:1, text: "It was OK"}, {rating: 2, text: "Good!"}, {rating: 3, text: "Phenomenal!" }];
+    // $scope.service = '';
+    // $scope.serviceCategories = [{rating:1, text: "It was OK"}, {rating: 2, text: "Good!"}, {rating: 3, text: "Phenomenal!" }];
     
-    $scope.food = '';
-    $scope.foodCategories = [{rating:1, text: "Decent"}, {rating: 2, text: "Yummy!"}, {rating: 3, text: "Transcendental" }];
+    // $scope.food = '';
+    // $scope.foodCategories = [{rating:1, text: "Decent"}, {rating: 2, text: "Yummy!"}, {rating: 3, text: "Transcendental" }];
     
-    $scope.ambience = '';
-    $scope.ambienceCategories = [{rating:1, text: "Not a priority"}, {rating: 2, text: "Welcoming"}, {rating: 3, text: "Something special" }];
+    // $scope.ambience = '';
+    // $scope.ambienceCategories = [{rating:1, text: "Not a priority"}, {rating: 2, text: "Welcoming"}, {rating: 3, text: "Something special" }];
     
     
     $scope.sendPost = function () {
@@ -28,7 +28,7 @@ angular
             priceRating: $scope.price,
             serviceRating: $scope.service,
             foodRating: $scope.food,
-            ambienceRating: $scope.ambience,
+            ambianceRating: $scope.ambiance,
             restaurantReview: $scope.restaurant.review,
             userEmail: JSON.parse(window.localStorage.profile).email
         });
@@ -47,6 +47,12 @@ angular
           data: data,
           url: '/api/restaurants'
         })
+
+        ngDialog.close();
+        
+
+        
       };
     
   });
+  

@@ -39,7 +39,7 @@
       ui-sref="user"
       aria-label="Write Review"
       style="float:right" 
-      ng-click="someAction()"
+      ng-click="openReview()"
       ng-if="toolbar.auth.isAuthenticated"
       aria-label="User">
       <i class="material-icons" class="name">mode_edit</i></md-icon>
@@ -72,7 +72,7 @@
 
   </div>
 <span class="container" ng-if="!toolbar.auth.isAuthenticated">
-  <img class= "image" src="/views/components/toolbar/SAVOR4XWHITEXBLACK.png">
+  <img class= "rotatingLogo" src="/views/components/toolbar/SAVOR4XWHITEXBLACK.png">
 </span>
 </md-toolbar>
 </body>

@@ -1,8 +1,8 @@
 angular
     .module('savor.toolbar', [])// we need to sort this out
-    .controller('toolbarController', toolbarController, ['toolbarFactory']);
+    .controller('toolbarController', ['toolbarFactory', 'ngDialog', '$scope']);
 
-function toolbarController(auth, store, $location) {
+function toolbarController(auth, store, $location, ngDialog, $scope) {
     var vm = this;
     vm.login = login;
     vm.logout = logout;
@@ -35,5 +35,13 @@ function toolbarController(auth, store, $location) {
       store.remove('token');
       $location.path('/');
       if (!$rootScope.$$phase) $rootScope.$apply();
+    }
+
+    $scope.openReview = function() {
+      ngDialog.open({template: '/views/components/review/review.tpl.html',
+        controller: 'reviewController',
+        scope: $scope,
+        className: 'ngdialog-theme-default dialogwidth800'
+      })
     }
 }
